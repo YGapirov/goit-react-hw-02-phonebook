@@ -1,58 +1,40 @@
-import {Component} from "react";
+import { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
-import { nanoid } from 'nanoid'; 
+import { nanoid } from 'nanoid';
 
+import { ContactList } from './ContactList/ContactList';
+import { ContactForm } from './ContactForm/ContactForm';
+// import { Filter } from './Filter/Filter';
 
 export class App extends Component {
- state = {
-  contacts: [],
-  name: ''
-}
-
-
-  handleChange = (e) => {
-    this.setState({ name: e.target.value }); 
+  state = {
+    contacts: [],
+    name: '',
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault(); // 
+  addContact = values => {
+    const contact = { ...values, id: nanoid() };
 
-    const addContact = {
-      name: this.state.name, // Створtyyz нового об'єкта
-      id: nanoid(), 
-    };
+    // console.log('addContact');
 
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, addContact], // Додаємо новий контакт до списку контактів у стані
-      name: '', // Очищаємо поле вводу після додавання контакту
-    }));
+    this.setState(prevState => {
+      return {
+        contacts: [...prevState.contacts, contact],
+      };
+    });
   };
+
+  // handleChange = e => {
+  //   this.setState({ name: e.target.value });
+  // };
 
   render() {
     return (
       <div>
         <h1>Phonebook</h1>
-
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              required
-              value={this.state.name} // Встановлюємо значення поля вводу зі стану
-              onChange={this.handleChange} // Додаємо обробник події зміни введеного тексту
-            />
-          </label>
-          <button type="submit">Add contact</button>
-        </form>
-
+        <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
-        <ul>
-          {this.state.contacts.map((contact) => (
-            <li key={contact.id}>{contact.name}</li> // Відображаємо список контактів зі стану
-          ))}
-        </ul>
+        <ContactList contacts={this.state.contacts} />
         <GlobalStyle />
       </div>
     );
