@@ -1,4 +1,4 @@
-export const Filter = ({ filters, onChangeFilter }) => {
+export const Filter = ({ filter, onFilter }) => {
   return (
     <label>
       Find contacts by name
@@ -6,9 +6,9 @@ export const Filter = ({ filters, onChangeFilter }) => {
         type="text"
         name="filter"
         placeholder="Search"
-        value={filters.value}
-        onChange={onChangeFilter}
-      ></input>
+        value={filter.value}
+        onChange={e => onFilter(e.target.value)}
+      />
     </label>
   );
 };
