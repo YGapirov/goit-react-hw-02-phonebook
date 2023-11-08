@@ -1,10 +1,11 @@
 import { Component } from 'react';
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from '../GlobalStyle';
 import { nanoid } from 'nanoid';
 
-import { ContactList } from './ContactList/ContactList';
-import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
+import { ContactList } from '../ContactList/ContactList';
+import { ContactForm } from '../ContactForm/ContactForm';
+import { Filter } from '../Filter/Filter';
+import { Container, Title, SubTitle } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -55,10 +56,10 @@ export class App extends Component {
       return hasName;
     });
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <Title>Phonebook</Title>
         <ContactForm onAddContact={this.addContact} />
-        <h2>Contacts</h2>
+        <SubTitle>Contacts</SubTitle>
         <Filter filter={filter} onFilter={this.updateFilter} />
         {visibleContacts.length > 0 && (
           <ContactList
@@ -67,7 +68,7 @@ export class App extends Component {
           />
         )}
         <GlobalStyle />
-      </div>
+      </Container>
     );
   }
 }

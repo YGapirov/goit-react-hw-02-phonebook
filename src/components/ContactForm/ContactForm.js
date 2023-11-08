@@ -6,6 +6,7 @@ import {
   StyledButton,
   StyledWrapper,
   StyledError,
+  Label,
 } from './ContactForm.styled';
 
 const formSchema = Yup.object().shape({
@@ -37,17 +38,17 @@ export const ContactForm = ({ onAddContact }) => {
         }}
       >
         <StyledForm>
-          <label>
+          <Label>
             Name
             <StyleField type="text" name="name" />
             <StyledError name="name" component="p" />
-          </label>
+          </Label>
 
-          <label>
+          <Label>
             Number
             <StyleField type="tel" name="number" />
             <StyledError name="number" component="p" />
-          </label>
+          </Label>
 
           <StyledButton type="submit">Add contact</StyledButton>
         </StyledForm>

@@ -8,7 +8,7 @@ export const StyledForm = styled(Form)`
 export const StyleField = styled(Field)`
   display: block;
   margin: 8px 0;
-  padding: 4px;
+  padding: 8px;
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid gray;
@@ -20,8 +20,10 @@ export const StyledButton = styled.button`
   padding: 5px;
   border-radius: 10px;
   border: none;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   box-shadow: 0 1px 7px grey;
+  background-color: navy;
+  color: white;
 
   &:hover,
   &:focus {
@@ -38,4 +40,8 @@ export const StyledWrapper = styled.div`
 export const StyledError = styled(ErrorMessage)`
   color: red;
   font-weight: bold;
+`;
+
+export const Label = styled.label`
+  color: darkgray;
 `;
